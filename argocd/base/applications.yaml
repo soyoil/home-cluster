@@ -32,13 +32,13 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: prometheus
+  name: monitoring
 spec:
   project: default
   source:
     repoURL: https://github.com/soyoil/home-cluster.git
     targetRevision: main
-    path: prometheus/base
+    path: monitoring/base
   destination:
     server: https://kubernetes.default.svc
-    namespace: grafana
+    namespace: monitoring

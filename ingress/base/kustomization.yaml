@@ -2,6 +2,16 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namespace: ingress-nginx
 
+helmCharts:
+- name: ingress-nginx
+  namespace: ingress-nginx
+  version: 3.6.3
+  repo: https://kubernetes.github.io/ingress-nginx
+    valuesInLine:
+      controller:
+        admissionWebhooks:
+          enabled: false
+
 resources:
-  - https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.2.1/deploy/static/provider/baremetal/deploy.yaml
   - ingresses.yaml
+

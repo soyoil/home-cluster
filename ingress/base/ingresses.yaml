@@ -19,4 +19,22 @@ spec:
             name: argocd-server
             port:
               name: http
-
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-grafana
+  namespace: grafana
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: grafana.k8s.soy.am
+    http:
+      paths:
+      - pathType: Prefix
+        path: /
+        backend:
+          service:
+            name: grafana
+            port:
+              number: 3000

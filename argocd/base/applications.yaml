@@ -14,3 +14,18 @@ spec:
   syncPolicy:
     automated:
       prune: true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: ingress
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/soyoil/home-cluster.git
+    targetRevision: main
+    path: ingress/base
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: ingress
+

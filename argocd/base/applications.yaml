@@ -27,7 +27,7 @@ spec:
     path: ingress/base
   destination:
     server: https://kubernetes.default.svc
-    namespace: ingress-nginx
+    namespace: ingress
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application

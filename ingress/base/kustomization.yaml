@@ -1,10 +1,10 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-namespace: ingress-nginx
+namespace: ingress
 
 helmCharts:
 - name: ingress-nginx
-  namespace: ingress-nginx
+  namespace: ingress
   version: 4.1.4
   repo: https://kubernetes.github.io/ingress-nginx
   valuesInLine:

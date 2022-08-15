@@ -12,9 +12,16 @@ bases:
 #  repo: https://argoproj.github.io/argo-helm
 
 resources:
-  - applications.yaml
+  - base/argocd-ingress.yaml
 
 patchesStrategicMerge:
-  - service.yaml
-  - configmap.yaml
+  - overlays/service.yaml
+  - overlays/configmap.yaml
 
+patchesJson6902:
+- path: overlays/production/argocd-server-deploy-command.yaml
+  target:
+    group: apps
+    kind: Deployment
+    name: argocd-server
+    version: v1
